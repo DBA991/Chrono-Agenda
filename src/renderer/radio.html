@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Chrono Radio</title>
+    <!-- CSP specifico per YouTube -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self' http://localhost:*; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://localhost:* https://www.youtube.com https://s.ytimg.com; style-src 'self' 'unsafe-inline' http://localhost:* https://www.youtube.com; img-src 'self' data: http://localhost:* https: blob:; font-src 'self' data: http://localhost:*; frame-src http://localhost:* https://www.youtube.com https://www.youtube-nocookie.com; connect-src 'self' http://localhost:* https://www.youtube.com https://*.googlevideo.com https://*.ytimg.com; media-src 'self' http://localhost:* https://*.googlevideo.com blob:;"
+    />
+    <meta http-equiv="Referrer-Policy" content="no-referrer-when-downgrade" />
+  </head>
+
+  <body>
+    <div id="radio-app"></div>
+    <script type="module" src="/src/radio.js"></script>
+  </body>
+</html>
