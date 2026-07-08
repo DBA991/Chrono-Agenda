@@ -590,12 +590,19 @@ function initPlayer(mediaId, isPlaylist) {
 
   if (typeof ytPlayer.loadVideoById === 'function') {
     if (isPlaylist) {
-      ytPlayer.loadPlaylist({
-        list: mediaId,
-        listType: 'playlist',
-        index: 0,
-        startSeconds: 0
-      })
+      // Come nella versione Capacitor (funzionante): fermare esplicitamente il
+      // player prima di caricare la nuova playlist, con un breve ritardo,
+      // evita che YouTube resti "agganciato" allo stato della playlist
+      // precedente quando si passa da una playlist a un'altra.
+      ytPlayer.stopVideo()
+      setTimeout(() => {
+        ytPlayer.loadPlaylist({
+          list: mediaId,
+          listType: 'playlist',
+          index: 0,
+          startSeconds: 0
+        })
+      }, 100)
     } else {
       ytPlayer.loadVideoById(mediaId)
     }
